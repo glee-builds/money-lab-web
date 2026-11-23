@@ -1,0 +1,359 @@
+{
+  "id": "03-now-or-later",
+  "number": 3,
+  "title": "Now or Later",
+  "question": "Spend today's coins, or save for a bigger stand?",
+  "phrase": "Now or later?",
+  "start": {
+    "cups": 0,
+    "sold": 0,
+    "missed": 0,
+    "made": 0,
+    "guess": 0
+  },
+  "carry": [
+    "coins",
+    "people",
+    "jar",
+    "treats",
+    "futureJar",
+    "bigStand"
+  ],
+  "steps": [
+    {
+      "part": "checkBack",
+      "kind": "choose",
+      "turn": "Tap your answer.",
+      "options": [
+        {
+          "label": "Yes"
+        },
+        {
+          "label": "Not yet"
+        }
+      ],
+      "say": "Did anyone ask “what do I give up?” this week?"
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "say",
+      "say": "A bigger stand fits more people. It costs 12 coins from your later jar."
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "choose",
+      "turn": "What do you think you'll do?",
+      "options": [
+        {
+          "label": "Treat now"
+        },
+        {
+          "label": "Save for later"
+        }
+      ],
+      "say": "Each day you can buy a treat now, or save 4 coins."
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "Day 1. Open your stand.",
+      "tapLabel": "Open",
+      "effects": [
+        {
+          "op": "add",
+          "name": "coins",
+          "from": "people"
+        }
+      ],
+      "times": 1
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "Treat now, or save for later?",
+      "options": [
+        {
+          "label": "Ice cream now",
+          "cost": 4,
+          "effects": [
+            {
+              "op": "add",
+              "name": "treats",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "label": "Save 4 for later",
+          "cost": 4,
+          "effects": [
+            {
+              "op": "add",
+              "name": "jar",
+              "amount": 4
+            }
+          ]
+        }
+      ],
+      "say": "You earned {people} coins today. Your later jar has {jar}."
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "Day 2. Open your stand.",
+      "tapLabel": "Open",
+      "effects": [
+        {
+          "op": "add",
+          "name": "coins",
+          "from": "people"
+        }
+      ],
+      "times": 1
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "Treat now, or save for later?",
+      "options": [
+        {
+          "label": "Ice cream now",
+          "cost": 4,
+          "effects": [
+            {
+              "op": "add",
+              "name": "treats",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "label": "Save 4 for later",
+          "cost": 4,
+          "effects": [
+            {
+              "op": "add",
+              "name": "jar",
+              "amount": 4
+            }
+          ]
+        }
+      ],
+      "say": "You earned {people} coins today. Your later jar has {jar}."
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "Day 3. Open your stand.",
+      "tapLabel": "Open",
+      "effects": [
+        {
+          "op": "add",
+          "name": "coins",
+          "from": "people"
+        }
+      ],
+      "times": 1
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "Treat now, or save for later?",
+      "options": [
+        {
+          "label": "Ice cream now",
+          "cost": 4,
+          "effects": [
+            {
+              "op": "add",
+              "name": "treats",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "label": "Save 4 for later",
+          "cost": 4,
+          "effects": [
+            {
+              "op": "add",
+              "name": "jar",
+              "amount": 4
+            }
+          ]
+        }
+      ],
+      "say": "You earned {people} coins today. Your later jar has {jar}."
+    },
+    {
+      "part": "whatWeFound",
+      "kind": "say",
+      "say": "Your later jar has {jar} coins. The bigger stand costs 12."
+    },
+    {
+      "part": "whatWeFound",
+      "kind": "choose",
+      "turn": "Pick the one that fits.",
+      "options": [
+        {
+          "label": "Saving a little each day adds up",
+          "correct": true
+        },
+        {
+          "label": "Coins in the later jar disappear",
+          "hint": "Look at your later jar. Are the coins still there?"
+        },
+        {
+          "label": "You can only save on the last day",
+          "hint": "Think about day 1. Could you save then?"
+        }
+      ],
+      "say": "What did you find out?"
+    },
+    {
+      "part": "whatWeFound",
+      "kind": "choose",
+      "turn": "Buy the bigger stand?",
+      "options": [
+        {
+          "label": "Buy it with 12 jar coins",
+          "cost": 12,
+          "costFrom": "jar",
+          "effects": [
+            {
+              "op": "add",
+              "name": "people",
+              "amount": 3
+            },
+            {
+              "op": "set",
+              "name": "bigStand",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "label": "Not yet. Keep saving."
+        }
+      ],
+      "say": "Your later jar has {jar} coins."
+    },
+    {
+      "part": "phrase",
+      "kind": "say",
+      "say": "Spending is now. Saving is later. Before you spend, ask: now or later?"
+    },
+    {
+      "part": "phrase",
+      "kind": "tap",
+      "turn": "Say it together: now or later?",
+      "tapLabel": "We said it",
+      "effects": [],
+      "times": 1
+    },
+    {
+      "part": "runTheStand",
+      "kind": "choose",
+      "turn": "How many cups will you make?",
+      "options": [
+        {
+          "label": "6",
+          "value": 6,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "label": "9",
+          "value": 9,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 9
+            }
+          ]
+        },
+        {
+          "label": "12",
+          "value": 12,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 12
+            }
+          ]
+        }
+      ],
+      "store": "made",
+      "say": "Now run your stand for a day. Use what you know."
+    },
+    {
+      "part": "runTheStand",
+      "kind": "tap",
+      "turn": "People are coming! Tap to serve each one.",
+      "tapLabel": "Serve",
+      "effects": [
+        {
+          "op": "sell"
+        }
+      ],
+      "timesFrom": "people"
+    },
+    {
+      "part": "runTheStand",
+      "kind": "say",
+      "say": "You sold {earned} cups. {left} were left over.",
+      "effects": [
+        {
+          "op": "log"
+        }
+      ],
+      "showNotebook": true
+    },
+    {
+      "part": "runTheStand",
+      "kind": "choose",
+      "turn": "Put coins in the future-me jar?",
+      "options": [
+        {
+          "label": "Put in 2",
+          "cost": 2,
+          "effects": [
+            {
+              "op": "add",
+              "name": "futureJar",
+              "amount": 2
+            }
+          ]
+        },
+        {
+          "label": "Put in 4",
+          "cost": 4,
+          "effects": [
+            {
+              "op": "add",
+              "name": "futureJar",
+              "amount": 4
+            }
+          ]
+        },
+        {
+          "label": "Not today"
+        }
+      ],
+      "justForYou": "This jar opens in lesson 8. Let them decide; a small amount is fine.",
+      "say": "One more jar: the future-me jar. It stays shut for a long time."
+    },
+    {
+      "part": "takeHome",
+      "kind": "say",
+      "say": "This week, ask “now or later?” about one thing you want."
+    }
+  ]
+}

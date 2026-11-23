@@ -1,0 +1,275 @@
+{
+  "id": "02-this-or-that",
+  "number": 2,
+  "title": "This or That",
+  "question": "A big sign or a bright flag?",
+  "phrase": "What do I give up?",
+  "start": {
+    "cups": 0,
+    "sold": 0,
+    "missed": 0,
+    "made": 0,
+    "guess": 0
+  },
+  "carry": [
+    "coins",
+    "people",
+    "sign",
+    "flag"
+  ],
+  "steps": [
+    {
+      "part": "checkBack",
+      "kind": "choose",
+      "turn": "Tap your answer.",
+      "options": [
+        {
+          "label": "Yes"
+        },
+        {
+          "label": "Not yet"
+        }
+      ],
+      "say": "Did anyone ask “will people want it?” this week?"
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "say",
+      "say": "Your stand has {coins} coins. You can buy one new thing for it."
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "choose",
+      "turn": "Which do you think you'll want?",
+      "options": [
+        {
+          "label": "The sign"
+        },
+        {
+          "label": "The flag"
+        }
+      ],
+      "say": "A big sign, or a bright flag. Each costs 9 coins."
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "First, borrow the sign for a day. Signs bring more people.",
+      "effects": [
+        {
+          "op": "set",
+          "name": "cups",
+          "amount": 9
+        },
+        {
+          "op": "set",
+          "name": "made",
+          "amount": 9
+        }
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "More people today! Tap to serve each one.",
+      "tapLabel": "Serve",
+      "effects": [
+        {
+          "op": "sell"
+        }
+      ],
+      "times": 9
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "With the sign, 9 people came. You earned {earned} coins.",
+      "effects": [
+        {
+          "op": "log"
+        }
+      ],
+      "showNotebook": true
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "Now borrow the flag for a day. Your stand looks great.",
+      "effects": [
+        {
+          "op": "set",
+          "name": "cups",
+          "amount": 6
+        },
+        {
+          "op": "set",
+          "name": "made",
+          "amount": 6
+        }
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "Tap to serve each person.",
+      "tapLabel": "Serve",
+      "effects": [
+        {
+          "op": "sell"
+        }
+      ],
+      "times": 6
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "With the flag, 6 people came. You earned {earned} coins.",
+      "effects": [
+        {
+          "op": "log"
+        }
+      ],
+      "showNotebook": true
+    },
+    {
+      "part": "whatWeFound",
+      "kind": "choose",
+      "turn": "What does your notebook show?",
+      "options": [
+        {
+          "label": "The sign brings more people",
+          "correct": true
+        },
+        {
+          "label": "The flag brings more people",
+          "hint": "Look at People came for each day."
+        },
+        {
+          "label": "They bring the same",
+          "hint": "Look at People came for each day."
+        }
+      ],
+      "showNotebook": true,
+      "say": "Look at your notebook."
+    },
+    {
+      "part": "whatWeFound",
+      "kind": "choose",
+      "turn": "Sign or flag?",
+      "options": [
+        {
+          "label": "Buy the sign",
+          "cost": 9,
+          "effects": [
+            {
+              "op": "set",
+              "name": "people",
+              "amount": 9
+            },
+            {
+              "op": "set",
+              "name": "sign",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "label": "Buy the flag",
+          "cost": 9,
+          "effects": [
+            {
+              "op": "set",
+              "name": "flag",
+              "amount": 1
+            }
+          ]
+        }
+      ],
+      "justForYou": "There is no wrong answer. More customers and a stand you love are both good reasons.",
+      "say": "Now choose. You have {coins} coins, so you can only buy one."
+    },
+    {
+      "part": "phrase",
+      "kind": "say",
+      "say": "You got one thing and gave up the other. Every choice works that way."
+    },
+    {
+      "part": "phrase",
+      "kind": "tap",
+      "turn": "Say it together: what do I give up?",
+      "tapLabel": "We said it",
+      "effects": [],
+      "times": 1
+    },
+    {
+      "part": "runTheStand",
+      "kind": "choose",
+      "turn": "How many cups will you make?",
+      "options": [
+        {
+          "label": "6",
+          "value": 6,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "label": "9",
+          "value": 9,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 9
+            }
+          ]
+        },
+        {
+          "label": "12",
+          "value": 12,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 12
+            }
+          ]
+        }
+      ],
+      "store": "made",
+      "say": "Now run your stand for a day. Use what you know."
+    },
+    {
+      "part": "runTheStand",
+      "kind": "tap",
+      "turn": "People are coming! Tap to serve each one.",
+      "tapLabel": "Serve",
+      "effects": [
+        {
+          "op": "sell"
+        }
+      ],
+      "timesFrom": "people"
+    },
+    {
+      "part": "runTheStand",
+      "kind": "say",
+      "say": "You sold {earned} cups. {left} were left over.",
+      "effects": [
+        {
+          "op": "log"
+        }
+      ],
+      "showNotebook": true
+    },
+    {
+      "part": "takeHome",
+      "kind": "say",
+      "say": "At the store this week, pick between two things. Ask: what do I give up?"
+    }
+  ]
+}

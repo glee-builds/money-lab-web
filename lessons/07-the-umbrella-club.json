@@ -1,0 +1,277 @@
+{
+  "id": "07-the-umbrella-club",
+  "number": 7,
+  "title": "The Umbrella Club",
+  "question": "What if a storm knocks over a stand?",
+  "phrase": "A little now, so a big loss isn't all mine.",
+  "start": {
+    "cups": 0,
+    "sold": 0,
+    "missed": 0,
+    "made": 0,
+    "guess": 0,
+    "storm": 0,
+    "club": 0
+  },
+  "carry": [
+    "coins",
+    "people",
+    "club"
+  ],
+  "steps": [
+    {
+      "part": "checkBack",
+      "kind": "choose",
+      "turn": "Tap your answer.",
+      "options": [
+        {
+          "label": "Yes"
+        },
+        {
+          "label": "Not yet"
+        }
+      ],
+      "say": "Did anyone say “what do they get if I say yes?” this week?"
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "say",
+      "say": "Last night a storm knocked over the baker's stand. Fixing it costs 8 coins."
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "choose",
+      "turn": "Can the baker fix the stand alone?",
+      "options": [
+        {
+          "label": "Yes",
+          "hint": "The baker has 3 coins. Fixing costs 8."
+        },
+        {
+          "label": "No",
+          "correct": true
+        }
+      ],
+      "say": "The baker only has 3 coins."
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "How many coins are in the pot?",
+      "options": [
+        {
+          "label": "4",
+          "hint": "Four stands, 2 coins each. Count by twos."
+        },
+        {
+          "label": "6",
+          "hint": "Four stands, 2 coins each. Count by twos."
+        },
+        {
+          "label": "8",
+          "correct": true
+        }
+      ],
+      "say": "Round 1. Four stands start a club. Each puts 2 coins in a pot."
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "Is 8 enough to fix one stand?",
+      "options": [
+        {
+          "label": "Enough",
+          "correct": true
+        },
+        {
+          "label": "Not enough",
+          "hint": "Fixing a stand costs 8. The pot has 8."
+        }
+      ],
+      "say": "Round 2. The club pays to fix whichever stand a storm hits."
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "Join the umbrella club for 2 coins?",
+      "options": [
+        {
+          "label": "Join the club",
+          "cost": 2,
+          "effects": [
+            {
+              "op": "set",
+              "name": "club",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "label": "Not this time"
+        }
+      ],
+      "justForYou": "This is the idea under insurance: a small cost now against a big loss later. Either choice teaches it.",
+      "say": "Round 3. This one is real. Storm clouds are coming."
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "See what the storm does.",
+      "tapLabel": "See the storm",
+      "effects": [
+        {
+          "op": "chance",
+          "name": "storm",
+          "amount": 5
+        }
+      ],
+      "times": 1
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "The storm hit your stand! The club paid to fix it.",
+      "when": [
+        "storm",
+        "club"
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "The storm hit your stand. Fixing it cost you 8 coins.",
+      "when": [
+        "storm"
+      ],
+      "unless": [
+        "club"
+      ],
+      "effects": [
+        {
+          "op": "lose",
+          "name": "coins",
+          "amount": 8
+        }
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "The storm missed you. Your 2 coins helped fix a neighbor's stand.",
+      "when": [
+        "club"
+      ],
+      "unless": [
+        "storm"
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "The storm missed you this time. You kept your coins.",
+      "unless": [
+        "storm",
+        "club"
+      ]
+    },
+    {
+      "part": "whatWeFound",
+      "kind": "choose",
+      "turn": "Pick the one that fits.",
+      "options": [
+        {
+          "label": "The club is a waste if no storm hits me",
+          "hint": "Where did the club's coins go when a storm hit a neighbor?"
+        },
+        {
+          "label": "Everyone pays a little, so nobody loses a lot",
+          "correct": true
+        }
+      ],
+      "say": "What did you find out?"
+    },
+    {
+      "part": "phrase",
+      "kind": "say",
+      "say": "That is what a club is for. A little now, so a big loss isn't all mine."
+    },
+    {
+      "part": "phrase",
+      "kind": "tap",
+      "turn": "Say it together: a little now, so a big loss isn't all mine.",
+      "tapLabel": "We said it",
+      "effects": [],
+      "times": 1
+    },
+    {
+      "part": "runTheStand",
+      "kind": "choose",
+      "turn": "How many cups will you make?",
+      "options": [
+        {
+          "label": "6",
+          "value": 6,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "label": "9",
+          "value": 9,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 9
+            }
+          ]
+        },
+        {
+          "label": "12",
+          "value": 12,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 12
+            }
+          ]
+        }
+      ],
+      "store": "made",
+      "say": "Now run your stand for a day. Use what you know."
+    },
+    {
+      "part": "runTheStand",
+      "kind": "tap",
+      "turn": "People are coming! Tap to serve each one.",
+      "tapLabel": "Serve",
+      "effects": [
+        {
+          "op": "sell"
+        }
+      ],
+      "timesFrom": "people"
+    },
+    {
+      "part": "runTheStand",
+      "kind": "say",
+      "say": "You sold {earned} cups. {left} were left over.",
+      "effects": [
+        {
+          "op": "log"
+        }
+      ],
+      "showNotebook": true
+    },
+    {
+      "part": "takeHome",
+      "kind": "say",
+      "say": "Find something that protects us. A little now, so a big loss isn't all mine."
+    }
+  ]
+}

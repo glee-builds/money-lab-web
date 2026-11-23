@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- Money Lab icon: the stand's striped awning over one big coin. Square and full-bleed; iOS rounds the corners. -->
+  <rect width="1024" height="1024" fill="#8fd0f5"/>
+  <rect y="700" width="1024" height="324" fill="#7fbf5f"/>
+  <ellipse cx="512" cy="700" rx="760" ry="120" fill="#7fbf5f"/>
+  <!-- coin -->
+  <circle cx="512" cy="640" r="250" fill="#edad21"/>
+  <circle cx="512" cy="622" r="250" fill="#fad440"/>
+  <circle cx="512" cy="622" r="178" fill="none" stroke="#edad21" stroke-width="22"/>
+  <circle cx="512" cy="622" r="96" fill="#edad21" opacity=".55"/>
+  <ellipse cx="398" cy="508" rx="34" ry="52" transform="rotate(40 398 508)" fill="#fff" opacity=".6"/>
+  <!-- awning: seven stripes with a scalloped edge -->
+  <g>
+    <rect width="1024" height="210" fill="#cc5414"/>
+    <g fill="#fff6e6"><rect x="146.3" width="146.3" height="210"/><rect x="438.9" width="146.3" height="210"/><rect x="731.4" width="146.3" height="210"/></g>
+    <g fill="#cc5414"><circle cx="73.1" cy="210" r="73.2"/><circle cx="365.7" cy="210" r="73.2"/><circle cx="658.3" cy="210" r="73.2"/><circle cx="950.9" cy="210" r="73.2"/></g>
+    <g fill="#fff6e6"><circle cx="219.4" cy="210" r="73.2"/><circle cx="512" cy="210" r="73.2"/><circle cx="804.6" cy="210" r="73.2"/></g>
+    <rect width="1024" height="26" fill="#9e3f0c"/>
+  </g>
+</svg>

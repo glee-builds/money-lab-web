@@ -1,0 +1,226 @@
+{
+  "id": "06-helper-or-tricker",
+  "number": 6,
+  "title": "Helper or Tricker",
+  "question": "Should I buy the “magic lemons”?",
+  "phrase": "What do they get if I say yes?",
+  "start": {
+    "cups": 0,
+    "sold": 0,
+    "missed": 0,
+    "made": 0,
+    "guess": 0,
+    "tricked": 0
+  },
+  "carry": [
+    "coins",
+    "people"
+  ],
+  "steps": [
+    {
+      "part": "checkBack",
+      "kind": "choose",
+      "turn": "Tap your answer.",
+      "options": [
+        {
+          "label": "Yes"
+        },
+        {
+          "label": "Not yet"
+        }
+      ],
+      "say": "Did anyone say “what if it doesn't go to plan?” this week?"
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "say",
+      "say": "The grocer has sold you good lemons every week. Today a new seller walks up."
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "choose",
+      "turn": "Who has helped you before?",
+      "options": [
+        {
+          "label": "The grocer",
+          "correct": true
+        },
+        {
+          "label": "The new seller",
+          "hint": "You only met the new seller today."
+        }
+      ],
+      "say": "The new seller says: magic lemons! Double the lemonade!"
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "What will you do?",
+      "options": [
+        {
+          "label": "Buy the magic lemons",
+          "cost": 5,
+          "effects": [
+            {
+              "op": "set",
+              "name": "tricked",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "label": "Slow down and ask a question"
+        }
+      ],
+      "justForYou": "Let them buy if they want to. Losing 5 pretend coins here is a cheap way to learn it.",
+      "say": "Round 1. The seller says: 5 coins, but only if you buy right now."
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "They were ordinary lemons. The seller kept your 5 coins and left.",
+      "when": [
+        "tricked"
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "You slowed down. The seller walked off to find someone who won't stop to think.",
+      "unless": [
+        "tricked"
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "What does the seller get if you say yes?",
+      "options": [
+        {
+          "label": "5 coins",
+          "correct": true
+        },
+        {
+          "label": "Nothing",
+          "hint": "Who ends up holding the coins?"
+        }
+      ],
+      "say": "Round 2. Think about the seller."
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "Which one is a sign of a tricker?",
+      "options": [
+        {
+          "label": "Lets you take your time",
+          "hint": "Who rushed you today, the grocer or the new seller?"
+        },
+        {
+          "label": "Rushes you to say yes",
+          "correct": true
+        }
+      ],
+      "say": "Round 3. The grocer never rushes you. The new seller did."
+    },
+    {
+      "part": "whatWeFound",
+      "kind": "choose",
+      "turn": "Pick the one that fits.",
+      "options": [
+        {
+          "label": "Anyone who sells things is a tricker",
+          "hint": "Think about the grocer. Is the grocer a tricker?"
+        },
+        {
+          "label": "Someone rushing my yes might be a tricker",
+          "correct": true
+        }
+      ],
+      "say": "What did you find out?"
+    },
+    {
+      "part": "phrase",
+      "kind": "say",
+      "say": "A helper lets you think. Before you say yes, ask: what do they get if I say yes?"
+    },
+    {
+      "part": "phrase",
+      "kind": "tap",
+      "turn": "Say it together: what do they get if I say yes?",
+      "tapLabel": "We said it",
+      "effects": [],
+      "times": 1
+    },
+    {
+      "part": "runTheStand",
+      "kind": "choose",
+      "turn": "How many cups will you make?",
+      "options": [
+        {
+          "label": "6",
+          "value": 6,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "label": "9",
+          "value": 9,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 9
+            }
+          ]
+        },
+        {
+          "label": "12",
+          "value": 12,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 12
+            }
+          ]
+        }
+      ],
+      "store": "made",
+      "say": "Now run your stand for a day. Use what you know."
+    },
+    {
+      "part": "runTheStand",
+      "kind": "tap",
+      "turn": "People are coming! Tap to serve each one.",
+      "tapLabel": "Serve",
+      "effects": [
+        {
+          "op": "sell"
+        }
+      ],
+      "timesFrom": "people"
+    },
+    {
+      "part": "runTheStand",
+      "kind": "say",
+      "say": "You sold {earned} cups. {left} were left over.",
+      "effects": [
+        {
+          "op": "log"
+        }
+      ],
+      "showNotebook": true
+    },
+    {
+      "part": "takeHome",
+      "kind": "say",
+      "say": "This week, find one ad. Ask: what do they get if I say yes?"
+    }
+  ]
+}

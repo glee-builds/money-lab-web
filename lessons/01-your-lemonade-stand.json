@@ -1,0 +1,336 @@
+{
+  "id": "01-your-lemonade-stand",
+  "number": 1,
+  "title": "Your Lemonade Stand",
+  "question": "How many cups should I make?",
+  "phrase": "Will people want it?",
+  "start": {
+    "cups": 0,
+    "sold": 0,
+    "missed": 0,
+    "made": 0,
+    "guess": 0,
+    "people": 6,
+    "coins": 0
+  },
+  "carry": [
+    "coins",
+    "people"
+  ],
+  "steps": [
+    {
+      "part": "todaysQuestion",
+      "kind": "say",
+      "say": "This is your lemonade stand. Each cup sells for 1 coin."
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "choose",
+      "turn": "How many coins are in your jar right now?",
+      "options": [
+        {
+          "label": "0",
+          "correct": true
+        },
+        {
+          "label": "3",
+          "hint": "Look at your jar. Is anything in it?"
+        },
+        {
+          "label": "5",
+          "hint": "Look at your jar. Is anything in it?"
+        }
+      ]
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "say",
+      "say": "Today you'll find out: how many cups should you make?",
+      "showNotebook": true
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "Day 1. Today you make 4 cups.",
+      "effects": [
+        {
+          "op": "set",
+          "name": "made",
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "Squeeze one lemon for each cup.",
+      "tapLabel": "Squeeze",
+      "effects": [
+        {
+          "op": "add",
+          "name": "cups",
+          "amount": 1
+        }
+      ],
+      "times": 4
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "How many coins will you earn today?",
+      "options": [
+        {
+          "label": "4",
+          "value": 4
+        },
+        {
+          "label": "6",
+          "value": 6
+        },
+        {
+          "label": "8",
+          "value": 8
+        }
+      ],
+      "store": "guess",
+      "say": "Before you open, make a guess."
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "People are coming! Tap to serve each one.",
+      "tapLabel": "Serve",
+      "effects": [
+        {
+          "op": "sell"
+        }
+      ],
+      "timesFrom": "people"
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "Day 1 is over. You earned {earned} coins. You guessed {guess}.",
+      "effects": [
+        {
+          "op": "log"
+        }
+      ],
+      "showNotebook": true
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "Day 2. This time, make 8 cups.",
+      "effects": [
+        {
+          "op": "set",
+          "name": "made",
+          "amount": 8
+        }
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "Squeeze one lemon for each cup.",
+      "tapLabel": "Squeeze",
+      "effects": [
+        {
+          "op": "add",
+          "name": "cups",
+          "amount": 1
+        }
+      ],
+      "times": 8
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "How many coins will you earn today?",
+      "options": [
+        {
+          "label": "4",
+          "value": 4
+        },
+        {
+          "label": "6",
+          "value": 6
+        },
+        {
+          "label": "8",
+          "value": 8
+        }
+      ],
+      "store": "guess",
+      "say": "Before you open, make a guess."
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "People are coming! Tap to serve each one.",
+      "tapLabel": "Serve",
+      "effects": [
+        {
+          "op": "sell"
+        }
+      ],
+      "timesFrom": "people"
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "Day 2 is over. You earned {earned} coins. You guessed {guess}.",
+      "effects": [
+        {
+          "op": "log"
+        }
+      ],
+      "showNotebook": true
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "How many people came each day?",
+      "options": [
+        {
+          "label": "4",
+          "hint": "Look at the People came column."
+        },
+        {
+          "label": "6",
+          "correct": true
+        },
+        {
+          "label": "8",
+          "hint": "Look at the People came column."
+        }
+      ],
+      "showNotebook": true,
+      "say": "Look at your notebook."
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "How many cups will you make?",
+      "options": [
+        {
+          "label": "4",
+          "value": 4
+        },
+        {
+          "label": "6",
+          "value": 6
+        },
+        {
+          "label": "8",
+          "value": 8
+        },
+        {
+          "label": "10",
+          "value": 10
+        }
+      ],
+      "store": "made",
+      "justForYou": "6 is what the notebook points to. Don't steer: wasting a few cups teaches more than being told.",
+      "say": "Day 3. You decide."
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "Squeeze one lemon for each cup.",
+      "tapLabel": "Squeeze",
+      "effects": [
+        {
+          "op": "add",
+          "name": "cups",
+          "amount": 1
+        }
+      ],
+      "timesFrom": "made"
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "How many coins will you earn today?",
+      "options": [
+        {
+          "label": "4",
+          "value": 4
+        },
+        {
+          "label": "6",
+          "value": 6
+        },
+        {
+          "label": "8",
+          "value": 8
+        }
+      ],
+      "store": "guess",
+      "say": "Before you open, make a guess."
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "People are coming! Tap to serve each one.",
+      "tapLabel": "Serve",
+      "effects": [
+        {
+          "op": "sell"
+        }
+      ],
+      "timesFrom": "people"
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "Day 3 is over. You earned {earned} coins. You guessed {guess}.",
+      "effects": [
+        {
+          "op": "log"
+        }
+      ],
+      "showNotebook": true
+    },
+    {
+      "part": "whatWeFound",
+      "kind": "choose",
+      "turn": "Pick the one your notebook shows.",
+      "options": [
+        {
+          "label": "Make as many cups as you can",
+          "hint": "Look at day 2. You made 8, but only 6 people came."
+        },
+        {
+          "label": "Make as many cups as people will buy",
+          "correct": true
+        },
+        {
+          "label": "It doesn't matter how many you make",
+          "hint": "Look at day 1 and day 2. Did you earn the same?"
+        }
+      ],
+      "showNotebook": true,
+      "say": "What did you find out?"
+    },
+    {
+      "part": "phrase",
+      "kind": "say",
+      "say": "You made lemonade, people wanted it, and they paid you. That's called earning."
+    },
+    {
+      "part": "phrase",
+      "kind": "tap",
+      "turn": "Say it together: will people want it?",
+      "tapLabel": "We said it",
+      "effects": [],
+      "times": 1
+    },
+    {
+      "part": "takeHome",
+      "kind": "say",
+      "say": "At the store this week, find something someone made to sell. Ask: will people want it?"
+    }
+  ]
+}

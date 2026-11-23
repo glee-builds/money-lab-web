@@ -1,0 +1,329 @@
+{
+  "id": "05-likely-or-not",
+  "number": 5,
+  "title": "Likely or Not",
+  "question": "Will it rain on market day?",
+  "phrase": "What if it doesn't go to plan?",
+  "start": {
+    "cups": 0,
+    "sold": 0,
+    "missed": 0,
+    "made": 0,
+    "guess": 0,
+    "rain": 0,
+    "today": 0
+  },
+  "carry": [
+    "coins",
+    "people",
+    "futureJar",
+    "planted"
+  ],
+  "steps": [
+    {
+      "part": "checkBack",
+      "kind": "choose",
+      "turn": "Tap your answer.",
+      "options": [
+        {
+          "label": "Yes"
+        },
+        {
+          "label": "Not yet"
+        }
+      ],
+      "say": "Did anyone say “we chip in for things we all use” this week?"
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "say",
+      "say": "On rainy days, almost nobody buys lemonade. Tomorrow is market day."
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "choose",
+      "turn": "Can anyone be sure about tomorrow's weather?",
+      "options": [
+        {
+          "label": "Yes"
+        },
+        {
+          "label": "No"
+        }
+      ],
+      "say": "Will it rain? Nobody knows for sure. But you can count."
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "Will it rain? Pick the best word.",
+      "options": [
+        {
+          "label": "Sure it will rain",
+          "hint": "Count them: 1 rainy days out of 10."
+        },
+        {
+          "label": "Likely",
+          "hint": "Count them: 1 rainy days out of 10."
+        },
+        {
+          "label": "Not likely",
+          "correct": true
+        }
+      ],
+      "say": "Round 1. Out of 10 days like this, 1 are rainy."
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "See what the day brings.",
+      "tapLabel": "See the day",
+      "effects": [
+        {
+          "op": "chance",
+          "name": "rain",
+          "amount": 1
+        }
+      ],
+      "times": 1
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "It rained. Not likely is not the same as never.",
+      "when": [
+        "rain"
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "No rain. Not likely is not the same as never.",
+      "unless": [
+        "rain"
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "Will it rain? Pick the best word.",
+      "options": [
+        {
+          "label": "Sure it will rain",
+          "hint": "Count them: 8 rainy days out of 10."
+        },
+        {
+          "label": "Likely",
+          "correct": true
+        },
+        {
+          "label": "Not likely",
+          "hint": "Count them: 8 rainy days out of 10."
+        }
+      ],
+      "say": "Round 2. Out of 10 days like this, 8 are rainy."
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "See what the day brings.",
+      "tapLabel": "See the day",
+      "effects": [
+        {
+          "op": "chance",
+          "name": "rain",
+          "amount": 8
+        }
+      ],
+      "times": 1
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "It rained. Likely is not the same as sure.",
+      "when": [
+        "rain"
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "No rain. Likely is not the same as sure.",
+      "unless": [
+        "rain"
+      ]
+    },
+    {
+      "part": "whatWeFound",
+      "kind": "choose",
+      "turn": "Pick the one that fits.",
+      "options": [
+        {
+          "label": "Likely things happen every time",
+          "hint": "Think about round 2. Was rain sure, or only likely?"
+        },
+        {
+          "label": "Likely means often, not always",
+          "correct": true
+        },
+        {
+          "label": "Nobody can ever guess the weather",
+          "hint": "You counted the rainy days. Did counting help you guess?"
+        }
+      ],
+      "say": "What did you find out?"
+    },
+    {
+      "part": "phrase",
+      "kind": "say",
+      "say": "Plans can go wrong. Before you decide, ask: what if it doesn't go to plan?"
+    },
+    {
+      "part": "phrase",
+      "kind": "tap",
+      "turn": "Say it together: what if it doesn't go to plan?",
+      "tapLabel": "We said it",
+      "effects": [],
+      "times": 1
+    },
+    {
+      "part": "runTheStand",
+      "kind": "choose",
+      "turn": "How many cups will you make?",
+      "options": [
+        {
+          "label": "3",
+          "value": 3,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 3
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "value": 6,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "label": "9",
+          "value": 9,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 9
+            }
+          ]
+        }
+      ],
+      "store": "made",
+      "justForYou": "A small batch is safe but earns less. A big batch earns more unless it rains. Both are fair choices.",
+      "say": "Market day. Out of 10 days like this, 3 are rainy."
+    },
+    {
+      "part": "runTheStand",
+      "kind": "tap",
+      "turn": "See what the day brings.",
+      "tapLabel": "See the day",
+      "effects": [
+        {
+          "op": "chance",
+          "name": "rain",
+          "amount": 3
+        }
+      ],
+      "times": 1
+    },
+    {
+      "part": "runTheStand",
+      "kind": "say",
+      "say": "It rained. Only 2 people came.",
+      "when": [
+        "rain"
+      ],
+      "effects": [
+        {
+          "op": "set",
+          "name": "today",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "part": "runTheStand",
+      "kind": "say",
+      "say": "The sun is out. Everyone came.",
+      "unless": [
+        "rain"
+      ],
+      "effects": [
+        {
+          "op": "set",
+          "name": "today",
+          "from": "people"
+        }
+      ]
+    },
+    {
+      "part": "runTheStand",
+      "kind": "tap",
+      "turn": "Tap to serve each person.",
+      "tapLabel": "Serve",
+      "effects": [
+        {
+          "op": "sell"
+        }
+      ],
+      "timesFrom": "today"
+    },
+    {
+      "part": "runTheStand",
+      "kind": "say",
+      "say": "You sold {earned} cups. {left} were left over.",
+      "effects": [
+        {
+          "op": "log"
+        }
+      ],
+      "showNotebook": true
+    },
+    {
+      "part": "runTheStand",
+      "kind": "choose",
+      "turn": "Plant 2 future-me coins in the garden?",
+      "options": [
+        {
+          "label": "Plant 2",
+          "cost": 2,
+          "costFrom": "futureJar",
+          "effects": [
+            {
+              "op": "add",
+              "name": "planted",
+              "amount": 2
+            }
+          ]
+        },
+        {
+          "label": "Keep them in the jar"
+        }
+      ],
+      "justForYou": "This comes back in lesson 8. If the jar is empty, they can only keep; that's fine.",
+      "say": "Planted coins might grow, or might not. Coins in the jar stay the same."
+    },
+    {
+      "part": "takeHome",
+      "kind": "say",
+      "say": "This week, when you make a plan, ask: what if it doesn't go to plan?"
+    }
+  ]
+}

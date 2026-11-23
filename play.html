@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Money Lab: a stand day</title>
+<meta name="theme-color" content="#fbf6e9">
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* Only for this prototype page. */
+a.close { display: grid; place-items: center; text-decoration: none; }
+.stand .tag { position: absolute; top: 4%; display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; border-radius: 14px; background: var(--surface); font-weight: 700; font-size: .9rem; box-shadow: var(--shadow); }
+.stand .sky { left: 3%; max-width: 58%; } .stand .price { right: 3%; }
+.queue { position: absolute; left: 2%; right: 2%; bottom: 3%; display: flex; justify-content: center; gap: 3px; }
+.face { position: relative; width: 36px; height: 36px; border-radius: 50%; background: var(--surface); display: grid; place-items: center; font-size: 1.35rem; box-shadow: var(--shadow); flex-shrink: 1; min-width: 0; }
+.face i { position: absolute; right: -4px; top: -8px; font-style: normal; font-size: .85rem; }
+.face.missed { background: var(--line); } .face.missed > span { opacity: .55; }
+.face.missed i { background: var(--ink); color: #fff; width: 16px; height: 16px; border-radius: 50%; display: grid; place-items: center; font-size: .65rem; font-weight: 800; }
+.crate { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; padding: 12px; border-radius: 22px; background: var(--wood); border: 3px solid var(--wood-deep); }
+.lemon, .gone { height: 64px; border-radius: 16px; font-size: 2.2rem; display: grid; place-items: center; }
+.lemon { background: var(--surface); box-shadow: 0 3px 0 var(--wood-deep); }
+.lemon:disabled { opacity: .35; box-shadow: none; cursor: default; }
+.gone { border: 2px dashed var(--wood-deep); color: var(--wood-deep); font-size: 1.4rem; font-weight: 800; }
+.result { font-size: 1.15rem; font-weight: 600; line-height: 1.35; }
+@media (prefers-reduced-motion: no-preference) { .face:last-child { animation: pop .3s cubic-bezier(.3,1.5,.5,1); } }
+</style>
+</head>
+<body>
+<main id="app" aria-live="polite"></main>
+<noscript>Money Lab needs JavaScript turned on.</noscript>
+<script type="module" src="play.js"></script>
+</body>
+</html>

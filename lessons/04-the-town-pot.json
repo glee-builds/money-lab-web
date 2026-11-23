@@ -1,0 +1,234 @@
+{
+  "id": "04-the-town-pot",
+  "number": 4,
+  "title": "The Town Pot",
+  "question": "Should the stands chip in for a bench at the park?",
+  "phrase": "We chip in for things we all use.",
+  "start": {
+    "cups": 0,
+    "sold": 0,
+    "missed": 0,
+    "made": 0,
+    "guess": 0,
+    "pot": 0
+  },
+  "carry": [
+    "coins",
+    "people",
+    "bench"
+  ],
+  "steps": [
+    {
+      "part": "checkBack",
+      "kind": "choose",
+      "turn": "Tap your answer.",
+      "options": [
+        {
+          "label": "Yes"
+        },
+        {
+          "label": "Not yet"
+        }
+      ],
+      "say": "Did anyone ask “now or later?” this week?"
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "say",
+      "say": "The park has nowhere to sit. A bench costs 6 coins."
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "choose",
+      "turn": "Who should pay for the bench?",
+      "options": [
+        {
+          "label": "Just me"
+        },
+        {
+          "label": "All three stands"
+        },
+        {
+          "label": "Nobody"
+        }
+      ],
+      "say": "Three stands sell at the park: yours and two neighbors'."
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "Is that enough for the bench?",
+      "options": [
+        {
+          "label": "Enough",
+          "hint": "The bench costs 6. Count the coins in the pot."
+        },
+        {
+          "label": "Not enough",
+          "correct": true
+        }
+      ],
+      "say": "Round 1. Nobody chips in. The town pot has 0 coins."
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "The pot has 4 coins. Enough for the bench?",
+      "options": [
+        {
+          "label": "Enough",
+          "hint": "The bench costs 6. Count the coins in the pot."
+        },
+        {
+          "label": "Not enough",
+          "correct": true
+        }
+      ],
+      "say": "Round 2. Your two neighbors chip in 2 each. You keep yours."
+    },
+    {
+      "part": "rounds",
+      "kind": "choose",
+      "turn": "Will you chip in 2 coins?",
+      "options": [
+        {
+          "label": "Chip in 2",
+          "cost": 2,
+          "effects": [
+            {
+              "op": "set",
+              "name": "pot",
+              "amount": 6
+            },
+            {
+              "op": "set",
+              "name": "bench",
+              "amount": 1
+            },
+            {
+              "op": "add",
+              "name": "people",
+              "amount": 2
+            }
+          ]
+        },
+        {
+          "label": "Keep my coins",
+          "effects": [
+            {
+              "op": "set",
+              "name": "pot",
+              "amount": 4
+            }
+          ]
+        }
+      ],
+      "justForYou": "If they keep their coins, the bench isn't built. Let that happen; the stand day shows the difference.",
+      "say": "Round 3. This one is real. Your neighbors chip in 2 each."
+    },
+    {
+      "part": "whatWeFound",
+      "kind": "say",
+      "say": "The town pot has {pot} coins. The bench costs 6."
+    },
+    {
+      "part": "whatWeFound",
+      "kind": "choose",
+      "turn": "Pick the one that fits.",
+      "options": [
+        {
+          "label": "The bench only happens if everyone chips in",
+          "correct": true
+        },
+        {
+          "label": "Someone else will always pay",
+          "hint": "Look at round 2. Was 4 enough?"
+        }
+      ],
+      "say": "What did you find out?"
+    },
+    {
+      "part": "phrase",
+      "kind": "say",
+      "say": "The town pot pays for things everyone shares. We chip in for things we all use."
+    },
+    {
+      "part": "phrase",
+      "kind": "tap",
+      "turn": "Say it together: we chip in for things we all use.",
+      "tapLabel": "We said it",
+      "effects": [],
+      "times": 1
+    },
+    {
+      "part": "runTheStand",
+      "kind": "choose",
+      "turn": "How many cups will you make?",
+      "options": [
+        {
+          "label": "6",
+          "value": 6,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "label": "9",
+          "value": 9,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 9
+            }
+          ]
+        },
+        {
+          "label": "12",
+          "value": 12,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 12
+            }
+          ]
+        }
+      ],
+      "store": "made",
+      "say": "Now run your stand for a day. Use what you know."
+    },
+    {
+      "part": "runTheStand",
+      "kind": "tap",
+      "turn": "People are coming! Tap to serve each one.",
+      "tapLabel": "Serve",
+      "effects": [
+        {
+          "op": "sell"
+        }
+      ],
+      "timesFrom": "people"
+    },
+    {
+      "part": "runTheStand",
+      "kind": "say",
+      "say": "You sold {earned} cups. {left} were left over.",
+      "effects": [
+        {
+          "op": "log"
+        }
+      ],
+      "showNotebook": true
+    },
+    {
+      "part": "takeHome",
+      "kind": "say",
+      "say": "Find one thing the town pot paid for. We chip in for things we all use."
+    }
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "id": "08-open-the-future-me-jar",
+  "number": 8,
+  "title": "Open the Future-Me Jar",
+  "question": "What grew while I waited?",
+  "phrase": "What do I give up? Now or later? What if?",
+  "start": {
+    "cups": 0,
+    "sold": 0,
+    "missed": 0,
+    "made": 0,
+    "guess": 0,
+    "grew": 0
+  },
+  "carry": [
+    "coins",
+    "people",
+    "futureJar",
+    "planted"
+  ],
+  "steps": [
+    {
+      "part": "checkBack",
+      "kind": "choose",
+      "turn": "Tap your answer.",
+      "options": [
+        {
+          "label": "Yes"
+        },
+        {
+          "label": "Not yet"
+        }
+      ],
+      "say": "Did anyone say “a little now, so a big loss isn't all mine” this week?"
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "say",
+      "say": "Today your future-me jar opens. You waited a long time."
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "say",
+      "say": "Your jar was empty, so a grown-up put in 2 coins to start it.",
+      "unless": [
+        "futureJar"
+      ],
+      "effects": [
+        {
+          "op": "set",
+          "name": "futureJar",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "part": "todaysQuestion",
+      "kind": "choose",
+      "turn": "What do you think happened to the coins?",
+      "options": [
+        {
+          "label": "They grew"
+        },
+        {
+          "label": "They stayed the same"
+        },
+        {
+          "label": "They are gone"
+        }
+      ],
+      "say": "Your jar has {futureJar} coins in it."
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "Round 1. Open the jar.",
+      "tapLabel": "Open the jar",
+      "effects": [],
+      "times": 1
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "A grown-up added one coin for every coin you saved. Count them now.",
+      "effects": [
+        {
+          "op": "add",
+          "name": "futureJar",
+          "from": "futureJar"
+        }
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "Round 2. Check the garden.",
+      "tapLabel": "Check the garden",
+      "effects": [
+        {
+          "op": "chance",
+          "name": "grew",
+          "amount": 6
+        }
+      ],
+      "when": [
+        "planted"
+      ],
+      "times": 1
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "Your planted coins grew! Now there are more.",
+      "when": [
+        "planted",
+        "grew"
+      ],
+      "effects": [
+        {
+          "op": "add",
+          "name": "planted",
+          "from": "planted"
+        }
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "Your planted coins did not grow this time. Planting is a maybe.",
+      "when": [
+        "planted"
+      ],
+      "unless": [
+        "grew"
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "say",
+      "say": "You kept every coin in the jar. Safe, with no chance to grow.",
+      "unless": [
+        "planted"
+      ]
+    },
+    {
+      "part": "rounds",
+      "kind": "tap",
+      "turn": "Round 3. Take your coins home.",
+      "tapLabel": "Take them",
+      "effects": [
+        {
+          "op": "add",
+          "name": "coins",
+          "from": "futureJar"
+        },
+        {
+          "op": "add",
+          "name": "coins",
+          "from": "planted"
+        },
+        {
+          "op": "set",
+          "name": "futureJar",
+          "amount": 0
+        },
+        {
+          "op": "set",
+          "name": "planted",
+          "amount": 0
+        }
+      ],
+      "times": 1
+    },
+    {
+      "part": "whatWeFound",
+      "kind": "choose",
+      "turn": "Pick the one that fits.",
+      "options": [
+        {
+          "label": "Waiting gave my coins time to grow",
+          "correct": true
+        },
+        {
+          "label": "Saving coins makes them disappear",
+          "hint": "Count your coins. Did you get them back?"
+        }
+      ],
+      "say": "You now have {coins} coins. What did you find out?"
+    },
+    {
+      "part": "phrase",
+      "kind": "say",
+      "say": "You know three big questions now. Say them with me."
+    },
+    {
+      "part": "phrase",
+      "kind": "tap",
+      "turn": "Say it together: what do I give up? Now or later? What if?",
+      "tapLabel": "We said it",
+      "effects": [],
+      "times": 1
+    },
+    {
+      "part": "runTheStand",
+      "kind": "choose",
+      "turn": "How many cups will you make?",
+      "options": [
+        {
+          "label": "6",
+          "value": 6,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "label": "9",
+          "value": 9,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 9
+            }
+          ]
+        },
+        {
+          "label": "12",
+          "value": 12,
+          "effects": [
+            {
+              "op": "set",
+              "name": "cups",
+              "amount": 12
+            }
+          ]
+        }
+      ],
+      "store": "made",
+      "say": "One more stand day. Use everything you know."
+    },
+    {
+      "part": "runTheStand",
+      "kind": "tap",
+      "turn": "People are coming! Tap to serve each one.",
+      "tapLabel": "Serve",
+      "effects": [
+        {
+          "op": "sell"
+        }
+      ],
+      "timesFrom": "people"
+    },
+    {
+      "part": "runTheStand",
+      "kind": "say",
+      "say": "You sold {earned} cups. {left} were left over.",
+      "effects": [
+        {
+          "op": "log"
+        }
+      ],
+      "showNotebook": true
+    },
+    {
+      "part": "takeHome",
+      "kind": "say",
+      "say": "Tell someone what your jar did. What do I give up? Now or later? What if?"
+    }
+  ]
+}

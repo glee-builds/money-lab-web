@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Money Lab: helper or tricker</title>
+<meta name="theme-color" content="#fbf6e9">
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* Only for this prototype page. */
+a.close { display: grid; place-items: center; text-decoration: none; }
+.stand.short { aspect-ratio: 5 / 2; }   /* a lower crop than the lessons use, so both questions fit on screen */
+.visitor { position: absolute; right: 7%; bottom: 6%; font-size: 3.6rem; line-height: 1; filter: drop-shadow(0 4px 4px rgb(41 31 23 / .25)); }
+.kind { display: inline-flex; align-items: center; gap: 4px; padding: 5px 12px; border-radius: 14px; font-weight: 800; font-size: .95rem; color: #fff; background: var(--good); flex-shrink: 0; }
+.kind.t { background: var(--ink); }
+.stand .kind { position: absolute; left: 3%; top: 5%; }
+.ask { flex: none; width: 100%; }
+.reply { background: var(--surface); border: 1px solid var(--line); border-radius: 6px 18px 18px 18px; padding: 10px 14px; font-size: 1.1rem; font-weight: 600; margin: -6px 0 0 18px; }
+.result { font-size: 1.2rem; font-weight: 600; line-height: 1.35; }
+.big.no { background: var(--surface); color: var(--ink); border: 2px solid var(--ink); box-shadow: none; }
+.who-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid var(--line); font-weight: 700; }
+.vface { font-size: 1.8rem; }
+@media (prefers-reduced-motion: no-preference) { .visitor, .reply { animation: pop .3s cubic-bezier(.3,1.5,.5,1); } }
+</style>
+</head>
+<body>
+<main id="app" aria-live="polite"></main>
+<noscript>Money Lab needs JavaScript turned on.</noscript>
+<script type="module" src="judge.js"></script>
+</body>
+</html>
